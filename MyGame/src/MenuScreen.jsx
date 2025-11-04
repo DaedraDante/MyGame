@@ -1,11 +1,14 @@
 
-function MenuScreen() {
-    
+function MenuScreen({showGameScreen,menuScreen,
+    setMenuScreen,gameScreen,setGameScreen}) {
+
   return(
     <>
       <div className="menu-screen">
-        <h1>Main Menu</h1>
-        <button>Start!</button>
+        <h1>My Game</h1>
+        <button onClick={() => {
+            showGameScreen();
+        }}>Start!</button>
         <button>Options</button>
         <button>Stats</button>
       </div>
