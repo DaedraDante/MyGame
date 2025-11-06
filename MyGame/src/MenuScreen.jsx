@@ -5,12 +5,12 @@ function MenuScreen({showGameScreen,menuScreen,
   return(
     <>
       <div className="menu-screen">
-        <h1>My Game</h1>
-        <button onClick={() => {
-            showGameScreen();
-        }}>Start!</button>
-        <button>Options</button>
-        <button>Stats</button>
+        <h1 className="game-title">My Game</h1>
+        <div className="menu-buttons">
+          <button onClick={() => {showGameScreen()}}>Start!</button>
+          <button>Options</button>
+          <button>Stats</button>
+        </div>
       </div>
     </>
   )
