@@ -2,9 +2,18 @@
 function GameScreen({showMenuScreen,setGameScreen,setMenuScreen,showShopScreen,setShopScreen}) {
     return(
       <div className="game-screen">
-        <h1>This is the game screen</h1>
-        <button onClick={showMenuScreen}>Back to menu</button>
-        <button onClick={showShopScreen}>Go to shop</button>
+        <div className="monster-and-player-area">
+          <div className="monster-area">
+            <p>test</p>
+          </div>
+          <div className="player-area">
+            <button onClick={showMenuScreen}>Back to menu</button>
+            <button onClick={showShopScreen}>Go to shop</button>
+          </div>
+        </div>
+        <div className="textbox-area">
+          <p>textbox</p>
+        </div>
       </div>
     )
 }
