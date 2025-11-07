@@ -1,18 +1,72 @@
 
-function GameScreen({showMenuScreen,setGameScreen,setMenuScreen,showShopScreen,setShopScreen}) {
+function GameScreen({combatScreen,setCombatScreen,showCombatScreen,showMenuScreen,setGameScreen,setMenuScreen,showShopScreen,setShopScreen}) {
     return(
-      <div className="game-screen">
-        <div className="monster-and-player-area">
-          <div className="monster-area">
-            <p>test</p>
-          </div>
-          <div className="player-area">
+      <div className="levels-screen">
+        <div className="levels-screen-levels-area">
+          <div className="level-area">
+              <h2>Level 1</h2>
+              <p>Difficulty: Easy</p>
+              <button onClick={showCombatScreen}>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 2</h2>
+              <p>Difficulty: Easy</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 3</h2>
+              <p>Difficulty: Easy</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 4</h2>
+              <p>Difficulty: Easy</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 5</h2>
+              <p>Difficulty: Medium</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 6</h2>
+              <p>Difficulty: Medium</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 7</h2>
+              <p>Difficulty: Medium</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 8</h2>
+              <p>Difficulty: Medium</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 9</h2>
+              <p>Difficulty: Hard</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 10</h2>
+              <p>Difficulty: Hard</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 11</h2>
+              <p>Difficulty: Hard</p>
+              <button>Start</button>
+            </div>
+            <div className="level-area">
+              <h2>Level 12</h2>
+              <p>Difficulty: Hard</p>
+              <button>Start</button>
+            </div>
+        </div>
+        <div className="game-screen-buttons-area">
             <button onClick={showMenuScreen}>Back to menu</button>
             <button onClick={showShopScreen}>Go to shop</button>
-          </div>
-        </div>
-        <div className="textbox-area">
-          <p>textbox</p>
         </div>
       </div>
     )
