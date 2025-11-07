@@ -64,7 +64,7 @@ function GameScreen({combatScreen,setCombatScreen,showCombatScreen,showMenuScree
               <button>Start</button>
             </div>
         </div>
-        <div className="game-screen-buttons-area">
+        <div className="levels-screen-buttons-area">
             <button onClick={showMenuScreen}>Back to menu</button>
             <button onClick={showShopScreen}>Go to shop</button>
         </div>

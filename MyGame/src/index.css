@@ -91,13 +91,14 @@ button:hover {
 
 
 .levels-screen {
-  background-color: var(--bg-color-2);
+  background-color: var(--bg-color-1);
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
+  align-content: center;
   gap: 1rem;
 }
 .levels-screen-levels-area {
@@ -111,7 +112,7 @@ button:hover {
   gap: 1rem;
 }
 .level-area {
-    margin: 1rem;
+  margin: 1rem;
   width: 14rem;
   height: 14rem;
   background-color: rgb(92, 58, 92);
@@ -121,9 +122,15 @@ button:hover {
   text-align: center;
   padding: 1rem;
 }
+.levels-screen-buttons-area button{
+  padding: 1rem;
+  margin: 1rem;
+  width: 12rem;
+  height: 4rem;
+}
 
 
-.game-screen {
+.combat-screen {
   background-color: var(--bg-color-1);
   height: 100vh;
   width: 100vw;
@@ -143,21 +150,9 @@ button:hover {
   height: 44rem;
   width: 72rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
-  overflow: auto;
   gap: 1rem;
-}
-.monster-area .level-box {
-  margin: 1rem;
-  width: 14rem;
-  height: 14rem;
-  background-color: rgb(92, 58, 92);
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  padding: 1rem;
 }
 .player-area {
   background-color: var(--bg-color-2);

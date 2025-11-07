@@ -31,15 +31,16 @@ function App() {
   }
 
   // player variables
-const [health,setHealth] = useState(100);
-const [gold,setGold] = useState(0);
+const [health,setHealth] = useState(12);
+const [gold,setGold] = useState(7);
+const [damage,setDamage] = useState(1);
 
   // monster variables
 const [currentMonster,setCurrentMonster] = useState("none")
 const [currentMonsterId,setCurrentMonsterId] = useState(0);
-const [currentMonsterName,setCurrentMonsterName] = useState("");
+const [currentMonsterName,setCurrentMonsterName] = useState("Slime");
 const [currentMonsterImg,setCurrentMonsterImg] = useState("src");
-const [currentMonsterHealth,setCurrentMosterHealth] = useState(0);
+const [currentMonsterHealth,setCurrentMonsterHealth] = useState(10);
 const [currentMonsterDamage,setCurrentMonsterDamage] = useState(0);
 const [currentMonsterGold,setCurrentMonsterGold] = useState(0);
 const [MonstersArray,setMonstersArray] = useState([
@@ -87,9 +88,18 @@ const [currentLevel,setCurrentLevel] = useState("")
       setGameScreen={setGameScreen}
       showGameScreen={showGameScreen}/> : null}
       {combatScreen ? <CombatScreen
+      health={health}
+      setHealth={setHealth}
+      gold={gold}
+      setGold={setGold}
       gameScreen={gameScreen}
       setGameScreen={setGameScreen}
       showGameScreen={showGameScreen}
+      currentMonsterName={currentMonsterName}
+      setCurrentMonsterName={setCurrentMonsterName}
+      currentMonsterHealth={currentMonsterHealth}
+      setCurrentMonsterHealth={setCurrentMonsterHealth}
+      damage={damage}
       /> : null}
     </>
   )
