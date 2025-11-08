@@ -54,19 +54,47 @@ const [damage,setDamage] = useState(() => {
   // monster variables
 const [currentMonster,setCurrentMonster] = useState("none")
 const [currentMonsterId,setCurrentMonsterId] = useState(0);
-const [currentMonsterName,setCurrentMonsterName] = useState("Slime");
+const [currentMonsterName,setCurrentMonsterName] = useState("Null");
 const [currentMonsterImg,setCurrentMonsterImg] = useState("src");
-const [currentMonsterHealth,setCurrentMonsterHealth] = useState(10);
+const [currentMonsterHealth,setCurrentMonsterHealth] = useState(9999);
 const [currentMonsterDamage,setCurrentMonsterDamage] = useState(0);
 const [currentMonsterGoldGiven,setCurrentMonsterGoldGiven] = useState(0);
 const [MonstersArray,setMonstersArray] = useState([
   {
     monsterId:1,
-    monsterName:"Slime",
+    monsterName:"Chub Slime",
     monsterImg:"monsterImage",
-    monsterHealth:"10",
+    monsterHealth:5,
     monsterDamage:3,
-    monsterGold:"5"
+    monsterGoldGiven:2
+  },  {
+    monsterId:2,
+    monsterName:"Gray Boar",
+    monsterImg:"monsterImage",
+    monsterHealth:18,
+    monsterDamage:3,
+    monsterGoldGiven:8
+  },  {
+    monsterId:3,
+    monsterName:"Fanged Wolf",
+    monsterImg:"monsterImage",
+    monsterHealth:32,
+    monsterDamage:3,
+    monsterGoldGiven:14
+  },  {
+    monsterId:4,
+    monsterName:"Grub Goblin",
+    monsterImg:"monsterImage",
+    monsterHealth:50,
+    monsterDamage:3,
+    monsterGoldGiven:28
+  },  {
+    monsterId:5,
+    monsterName:"Bloody Dire Wolf",
+    monsterImg:"monsterImage",
+    monsterHealth:75,
+    monsterDamage:3,
+    monsterGoldGiven:38
   }
 ])
 // const [levelArray,setLevelArray] = useState([
@@ -79,14 +107,14 @@ const [MonstersArray,setMonstersArray] = useState([
   //spawn monster functions
 
 const spawnSlime = () => {
-  setCurrentMonsterName("Slime");
-  setCurrentMonsterHealth(10);
-  setCurrentMonsterGoldGiven(3);
+  setCurrentMonsterName(MonstersArray[0].monsterName);
+  setCurrentMonsterHealth(MonstersArray[0].monsterHealth);
+  setCurrentMonsterGoldGiven(MonstersArray[0].monsterGoldGiven);
 }
-const spawnWolf = () => {
-  setCurrentMonsterName("Wolf");
-  setCurrentMonsterHealth(25);
-  setCurrentMonsterGoldGiven(15);
+const spawnGrayBoar = () => {
+  setCurrentMonsterName(MonstersArray[1].monsterName);
+  setCurrentMonsterHealth(MonstersArray[1].monsterHealth);
+  setCurrentMonsterGoldGiven(MonstersArray[1].monsterGoldGiven);
 }
   // level variables
 const [currentLevel,setCurrentLevel] = useState("");
@@ -99,7 +127,7 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       if(enemiesDefeated === 0) {
         spawnSlime();
       }else if(enemiesDefeated === 1) {
-        spawnWolf();
+        spawnGrayBoar();
       }else if(enemiesDefeated === 2) {
         setEnemiesDefeated(0);
         alert("Success you finished the level!")
@@ -112,6 +140,22 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
   function startLevelOne() {
     setCurrentLevel(1);
     showCombatScreen();
+  }
+  function startLevelTwo() {
+    setCurrentLevel(2);
+    showCombatScreen()
+  }
+  function startLevelThree() {
+    setCurrentLevel(3);
+    showCombatScreen()
+  }
+  function startLevelFour() {
+    setCurrentLevel(4);
+    showCombatScreen()
+  }
+  function startLevelFive() {
+    setCurrentLevel(5);
+    showCombatScreen()
   }
 
   return (
@@ -133,6 +177,10 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       setCombatScreen={setCombatScreen}
       showCombatScreen={showCombatScreen}
       startLevelOne={startLevelOne}
+      startLevelTwo={startLevelTwo}
+      startLevelThree={startLevelThree}
+      startLevelFour={startLevelFour}
+      startLevelFive={startLevelFive}
       /> : null}
       {shopScreen ? <ShopScreen
       setShopScreen={setShopScreen}
@@ -156,8 +204,6 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       damage={damage}
       enemiesDefeated={enemiesDefeated}
       setEnemiesDefeated={setEnemiesDefeated}
-      spawnSlime={spawnSlime}
-      spawnWolf={spawnWolf}
       /> : null}
     </>
   )
