@@ -1,12 +1,12 @@
 
-function GameScreen({combatScreen,setCombatScreen,showCombatScreen,showMenuScreen,setGameScreen,setMenuScreen,showShopScreen,setShopScreen}) {
+function GameScreen({startLevelOne,combatScreen,setCombatScreen,showCombatScreen,showMenuScreen,setGameScreen,setMenuScreen,showShopScreen,setShopScreen}) {
     return(
       <div className="levels-screen">
         <div className="levels-screen-levels-area">
           <div className="level-area">
               <h2>Level 1</h2>
               <p>Difficulty: Easy</p>
-              <button onClick={showCombatScreen}>Start</button>
+              <button onClick={startLevelOne}>Start</button>
             </div>
             <div className="level-area">
               <h2>Level 2</h2>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import MenuScreen from './MenuScreen'
 import GameScreen from './GameScreen'
 import ShopScreen from './ShopScreen'
@@ -30,10 +30,26 @@ function App() {
     setCombatScreen(true);
   }
 
-  // player variables
-const [health,setHealth] = useState(12);
-const [gold,setGold] = useState(7);
-const [damage,setDamage] = useState(1);
+  // player variables, retrieval from local storage
+const [health,setHealth] = useState(() => {
+  const savedHealth = localStorage.getItem("health");
+  return savedHealth ? JSON.parse(savedHealth) : 100;
+});
+const [gold,setGold] = useState(() => {
+  const savedGold = localStorage.getItem("gold");
+  return savedGold ? JSON.parse(savedGold) : 0;
+});
+const [damage,setDamage] = useState(() => {
+  const savedDamage = localStorage.getItem("damage");
+  return savedDamage ? JSON.parse(savedDamage) : 1;
+});
+
+// player variables, setting to local storage
+  useEffect(() => {
+    localStorage.setItem("gold",JSON.stringify(gold));
+    localStorage.setItem("health",JSON.stringify(health));
+    localStorage.setItem("damage",JSON.stringify(damage));
+  },[gold,health,damage]);  
 
   // monster variables
 const [currentMonster,setCurrentMonster] = useState("none")
@@ -42,7 +58,7 @@ const [currentMonsterName,setCurrentMonsterName] = useState("Slime");
 const [currentMonsterImg,setCurrentMonsterImg] = useState("src");
 const [currentMonsterHealth,setCurrentMonsterHealth] = useState(10);
 const [currentMonsterDamage,setCurrentMonsterDamage] = useState(0);
-const [currentMonsterGold,setCurrentMonsterGold] = useState(0);
+const [currentMonsterGoldGiven,setCurrentMonsterGoldGiven] = useState(0);
 const [MonstersArray,setMonstersArray] = useState([
   {
     monsterId:1,
@@ -60,8 +76,43 @@ const [MonstersArray,setMonstersArray] = useState([
 //     levelGoldReward:12
 //   }
 // ])
+  //spawn monster functions
+
+const spawnSlime = () => {
+  setCurrentMonsterName("Slime");
+  setCurrentMonsterHealth(10);
+  setCurrentMonsterGoldGiven(3);
+}
+const spawnWolf = () => {
+  setCurrentMonsterName("Wolf");
+  setCurrentMonsterHealth(25);
+  setCurrentMonsterGoldGiven(15);
+}
   // level variables
-const [currentLevel,setCurrentLevel] = useState("")
+const [currentLevel,setCurrentLevel] = useState("");
+const [enemiesRemaining,setEnemiesRemaining] = useState(1);
+const [enemiesDefeated,setEnemiesDefeated] = useState(0);
+
+// start level functions
+  useEffect(() => {
+    if(currentLevel === 1) {
+      if(enemiesDefeated === 0) {
+        spawnSlime();
+      }else if(enemiesDefeated === 1) {
+        spawnWolf();
+      }else if(enemiesDefeated === 2) {
+        setEnemiesDefeated(0);
+        alert("Success you finished the level!")
+        showGameScreen();
+      } 
+    }
+  },[currentLevel,enemiesDefeated])
+
+
+  function startLevelOne() {
+    setCurrentLevel(1);
+    showCombatScreen();
+  }
 
   return (
     <>
@@ -81,6 +132,7 @@ const [currentLevel,setCurrentLevel] = useState("")
       combatScreen={combatScreen}
       setCombatScreen={setCombatScreen}
       showCombatScreen={showCombatScreen}
+      startLevelOne={startLevelOne}
       /> : null}
       {shopScreen ? <ShopScreen
       setShopScreen={setShopScreen}
@@ -99,7 +151,13 @@ const [currentLevel,setCurrentLevel] = useState("")
       setCurrentMonsterName={setCurrentMonsterName}
       currentMonsterHealth={currentMonsterHealth}
       setCurrentMonsterHealth={setCurrentMonsterHealth}
+      currentMonsterGoldGiven={currentMonsterGoldGiven}
+      setCurrentMonsterGoldGiven={setCurrentMonsterGoldGiven}
       damage={damage}
+      enemiesDefeated={enemiesDefeated}
+      setEnemiesDefeated={setEnemiesDefeated}
+      spawnSlime={spawnSlime}
+      spawnWolf={spawnWolf}
       /> : null}
     </>
   )

@@ -1,13 +1,19 @@
- function CombatScreen({damage,currentMonsterName,setCurrentMonsterName,
+ function CombatScreen({currentMonsterGoldGiven,
+  setCurrentMonsterGoldGiven,
+  enemiesDefeated,setEnemiesDefeated,
+  damage,currentMonsterName,setCurrentMonsterName,
   currentMonsterHealth,setCurrentMonsterHealth,
   health,setHealth,gold,setGold,gameScreen,
   setGameScreen,showGameScreen}) {
 
     const attackMonster = () => {
-      if(currentMonsterHealth > 0) {
+      if(currentMonsterHealth > 1) {
         setCurrentMonsterHealth(prevMonsterHealth => prevMonsterHealth - damage)
         }else {
-        alert(`succesfully defeated ${currentMonsterName}`)
+          setEnemiesDefeated(prevEnemiesDefeated => prevEnemiesDefeated + 1)
+          console.log(enemiesDefeated)
+          alert(`succesfully defeated ${currentMonsterName}`)
+          setGold(prevGold => prevGold + currentMonsterGoldGiven)
         }
       }
       
@@ -23,7 +29,9 @@
                 <button onClick={() => {
                   attackMonster();
                 }}>Attack</button>
-                <button>Flee</button>
+                <button onClick={() => {
+                  showGameScreen();
+                }}>Flee</button>
                 <h2>HP: {health}</h2>
                 <h2>Gold: {gold} </h2>
             </div>
