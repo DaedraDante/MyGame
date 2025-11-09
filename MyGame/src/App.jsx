@@ -50,8 +50,10 @@ const [damage,setDamage] = useState(() => {
     localStorage.setItem("health",JSON.stringify(health));
     localStorage.setItem("damage",JSON.stringify(damage));
   },[gold,health,damage]);  
+// textbox logic
+const [textboxMsgs,setTextboxMsgs] = useState([""]);
 
-  // monster variables
+// monster variables
 const [currentMonster,setCurrentMonster] = useState("none")
 const [currentMonsterId,setCurrentMonsterId] = useState(0);
 const [currentMonsterName,setCurrentMonsterName] = useState("Null");
@@ -72,28 +74,28 @@ const [MonstersArray,setMonstersArray] = useState([
     monsterName:"Gray Boar",
     monsterImg:"monsterImage",
     monsterHealth:18,
-    monsterDamage:3,
+    monsterDamage:6,
     monsterGoldGiven:8
   },  {
     monsterId:3,
     monsterName:"Fanged Wolf",
     monsterImg:"monsterImage",
     monsterHealth:32,
-    monsterDamage:3,
+    monsterDamage:11,
     monsterGoldGiven:14
   },  {
     monsterId:4,
     monsterName:"Grub Goblin",
     monsterImg:"monsterImage",
     monsterHealth:50,
-    monsterDamage:3,
+    monsterDamage:18,
     monsterGoldGiven:28
   },  {
     monsterId:5,
     monsterName:"Bloody Dire Wolf",
     monsterImg:"monsterImage",
     monsterHealth:75,
-    monsterDamage:3,
+    monsterDamage:26,
     monsterGoldGiven:38
   }
 ])
@@ -106,15 +108,35 @@ const [MonstersArray,setMonstersArray] = useState([
 // ])
   //spawn monster functions
 
-const spawnSlime = () => {
+const spawnChubSlime = () => {
   setCurrentMonsterName(MonstersArray[0].monsterName);
   setCurrentMonsterHealth(MonstersArray[0].monsterHealth);
   setCurrentMonsterGoldGiven(MonstersArray[0].monsterGoldGiven);
+  setCurrentMonsterDamage(MonstersArray[0].monsterDamage);
 }
 const spawnGrayBoar = () => {
   setCurrentMonsterName(MonstersArray[1].monsterName);
   setCurrentMonsterHealth(MonstersArray[1].monsterHealth);
   setCurrentMonsterGoldGiven(MonstersArray[1].monsterGoldGiven);
+  setCurrentMonsterDamage(MonstersArray[1].monsterDamage);
+}
+const spawnFangedWolf = () => {
+  setCurrentMonsterName(MonstersArray[2].monsterName);
+  setCurrentMonsterHealth(MonstersArray[2].monsterHealth);
+  setCurrentMonsterGoldGiven(MonstersArray[2].monsterGoldGiven);
+  setCurrentMonsterDamage(MonstersArray[2].monsterDamage);
+}
+const spawnGrubGoblin = () => {
+  setCurrentMonsterName(MonstersArray[3].monsterName);
+  setCurrentMonsterHealth(MonstersArray[3].monsterHealth);
+  setCurrentMonsterGoldGiven(MonstersArray[3].monsterGoldGiven);
+  setCurrentMonsterDamage(MonstersArray[3].monsterDamage);
+}
+const spawnBloodyDireWolf = () => {
+  setCurrentMonsterName(MonstersArray[4].monsterName);
+  setCurrentMonsterHealth(MonstersArray[4].monsterHealth);
+  setCurrentMonsterGoldGiven(MonstersArray[4].monsterGoldGiven);
+  setCurrentMonsterDamage(MonstersArray[4].monsterDamage);
 }
   // level variables
 const [currentLevel,setCurrentLevel] = useState("");
@@ -125,9 +147,22 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
   useEffect(() => {
     if(currentLevel === 1) {
       if(enemiesDefeated === 0) {
-        spawnSlime();
+        spawnChubSlime();
       }else if(enemiesDefeated === 1) {
+        spawnChubSlime();
+      }else if(enemiesDefeated === 2) {
         spawnGrayBoar();
+      }else if(enemiesDefeated === 3) {
+        setEnemiesDefeated(0);
+        alert("Success you finished the level!")
+        showGameScreen();
+      } 
+    }
+    if(currentLevel === 2) {
+      if(enemiesDefeated === 0) {
+        spawnGrayBoar();
+      }else if(enemiesDefeated === 1) {
+        spawnFangedWolf();
       }else if(enemiesDefeated === 2) {
         setEnemiesDefeated(0);
         alert("Success you finished the level!")
