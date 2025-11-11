@@ -16,19 +16,19 @@ function App() {
     setShopScreen(false);
     setCombatScreen(false);
     setGameScreen(true);
-  }
+  };
   const showShopScreen = () => {
     setGameScreen(false);
     setShopScreen(true);
-  }
+  };
   const showMenuScreen = () => {
     setGameScreen(false);
     setMenuScreen(true);
-  }
+  };
   const showCombatScreen = () => {
     setGameScreen(false);
     setCombatScreen(true);
-  }
+  };
 
   // player variables, retrieval from local storage
 const [health,setHealth] = useState(() => {
@@ -56,7 +56,7 @@ const [textboxMsgs,setTextboxMsgs] = useState([""]);
 // monster variables
 const [currentMonster,setCurrentMonster] = useState("none")
 const [currentMonsterId,setCurrentMonsterId] = useState(0);
-const [currentMonsterName,setCurrentMonsterName] = useState("Null");
+const [currentMonsterName,setCurrentMonsterName] = useState(null);
 const [currentMonsterImg,setCurrentMonsterImg] = useState("src");
 const [currentMonsterHealth,setCurrentMonsterHealth] = useState(9999);
 const [currentMonsterDamage,setCurrentMonsterDamage] = useState(0);

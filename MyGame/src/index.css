@@ -186,3 +186,36 @@ button:hover {
   text-align: center;
   gap: 1rem;
 }
+.shop-inner {
+  display: flex;
+  gap: 2rem;
+}
+.item-option {
+  background-color: blue;
+  width: 20rem;
+  padding: 1rem;
+}
+.item-option h2{
+  font-size: 1rem;
+}
+.weapons-shop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: var(--bg-color-2);
+  width: 32rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.armor-shop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: var(--bg-color-2);
+  width: 32rem;
+  border-radius: 0.5rem;
+}
