@@ -43,16 +43,88 @@ const [damage,setDamage] = useState(() => {
   const savedDamage = localStorage.getItem("damage");
   return savedDamage ? JSON.parse(savedDamage) : 1;
 });
+const [currentWeapon,setCurrentWeapon] = useState(() => {
+  const savedCurrentWeapon = localStorage.getItem("currentWeapon");
+  return savedCurrentWeapon ? JSON.parse(savedCurrentWeapon) : "fist";
+});
+const [currentArmor,setCurrentArmor] = useState(() => {
+  const savedCurrentArmor = localStorage.getItem("currentArmor");
+  return savedCurrentArmor ? JSON.parse(savedCurrentArmor) : "Old";
+});
 
 // player variables, setting to local storage
   useEffect(() => {
     localStorage.setItem("gold",JSON.stringify(gold));
     localStorage.setItem("health",JSON.stringify(health));
     localStorage.setItem("damage",JSON.stringify(damage));
+    localStorage.setItem("currentWeapon",JSON.stringify(currentWeapon));
+    localStorage.setItem("currentArmor",JSON.stringify(currentArmor));
   },[gold,health,damage]);  
+
 // textbox logic
 const [textboxMsgs,setTextboxMsgs] = useState([""]);
 
+// shop logic
+const [weaponsArray,setWeaponsArray] = useState([
+  {weaponName:"Sharpened Stick",
+   weaponDamage:2,
+   weaponCost:10
+  },
+  {weaponName:"Copper Shortsword",
+   weaponDamage:5,
+   weaponCost:25
+  },  
+  {weaponName:"Iron Mace",
+   weaponDamage:9,
+   weaponCost:40
+  },  
+  {weaponName:"Black Bone Scythe",
+   weaponDamage:14,
+   weaponCost:85
+  },  
+  {weaponName:"Flaming Platinum Staff",
+   weaponDamage:20,
+   weaponCost:140
+  },  
+  {weaponName:"Scepter Of Doom",
+   weaponDamage:35,
+   weaponCost:300
+  },
+]);
+const [armorsArray,setArmorsArray] = useState([
+  {
+    armorName:"Old Worn Leather Suit",
+    armorValue:1,
+    armorCost:10
+  },
+   {
+    armorName:"Chainmail Armor Set",
+    armorValue:3,
+    armorCost:25
+  },
+   {
+    armorName:"Old Worn Leather Suit",
+    armorValue:5,
+    armorCost:40
+  },
+   {
+    armorName:"Old Worn Leather Suit",
+    armorValue:10,
+    armorCost:85
+  },
+   {
+    armorName:"Old Worn Leather Suit",
+    armorValue:14,
+    armorCost:140
+  },
+   {
+    armorName:"Old Worn Leather Suit",
+    armorValue:20,
+    armorCost:300
+  }
+]);
+const [selectedShopWeapon,setSelectedShopWeapon] = useState("");
+const [selectedShopArmor,setSelectedShopArmor] = useState("");
 // monster variables
 const [currentMonster,setCurrentMonster] = useState("none")
 const [currentMonsterId,setCurrentMonsterId] = useState(0);
@@ -221,7 +293,23 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       setShopScreen={setShopScreen}
       setMenuScreen={setMenuScreen}
       setGameScreen={setGameScreen}
-      showGameScreen={showGameScreen}/> : null}
+      showGameScreen={showGameScreen}
+      weaponsArray={weaponsArray}
+      setWeaponsArray={setWeaponsArray}
+      armorsArray={armorsArray}
+      setArmorsArray={setArmorsArray}
+      damage={damage}
+      setDamage={setDamage}
+      health={health}
+      setHealth={setHealth}
+      gold={gold}
+      setGold={setGold}
+      currentWeapon={currentWeapon}
+      setCurrentWeapon={setCurrentWeapon}
+      currentArmor={currentArmor}
+      setCurrentArmor={setCurrentArmor}
+      /> : null}
+
       {combatScreen ? <CombatScreen
       health={health}
       setHealth={setHealth}
