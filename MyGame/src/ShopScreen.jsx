@@ -14,14 +14,23 @@ currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor}) {
 
   const purchaseWeapon = (weaponIndex) => {
     if(gold > weaponsArray[weaponIndex].weaponCost) {
-        // setCurrentWeapon(weaponsArray[weaponIndex.weaponName]);
-        // setDamage(weaponsArray[weaponIndex.weaponDamage]);
-        // setGold(prevGold => prevGold - weaponsArray[weaponIndex.weaponCost]);
-        alert(`hello`);
+        alert(`bought ${weaponsArray[weaponIndex].weaponName}!`);
+        setCurrentWeapon(weaponsArray[weaponIndex].weaponName);
+        setDamage(weaponsArray[weaponIndex].weaponDamage);
+        setGold(prevGold => prevGold - weaponsArray[weaponIndex].weaponCost);
+    }else if(gold < weaponsArray[weaponIndex].weaponCost) {
+        alert(`not enough money to buy ${weaponsArray[weaponIndex].weaponName}`)
     }
   }
-  const purchaseArmor = (selectedShopArmor) => {
-    console.log(armorsArray[selectedShopArmor].armorValue);
+  const purchaseArmor = (armorIndex) => {
+        if(gold > armorsArray[armorIndex].armorCost) {
+        alert(`bought ${armorsArray[armorIndex].armorName}!`);
+        setCurrentArmor(armorsArray[armorIndex].armorName);
+        setHealth(armorsArray[armorIndex].armorValue);
+        setGold(prevGold => prevGold - armorsArray[armorIndex].armorCost);
+    }else if(gold < armorsArray[armorIndex].armorCost) {
+        alert(`not enough money to buy ${armorsArray[armorIndex].armorName}`)
+    }
   }
  
   return(
@@ -30,6 +39,7 @@ currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor}) {
         <div className="weapons-shop">
           <h1>Weapons</h1>
            <div className="item-option">
+            <p>{gold} gold</p>
             <h2>Sharpened Stick</h2>
             <button onClick={() => {
               purchaseWeapon(0);
@@ -70,27 +80,39 @@ currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor}) {
           <h1>Armor</h1>
           <div className="item-option">
             <h2>Old Worn Leather Suit</h2>
-            <button onClick={purchaseArmor}>10$</button>
+            <button onClick={() => {
+              purchaseArmor(0);
+            }}>10$</button>
           </div>
           <div className="item-option">
             <h2>Chainmail Armor Set</h2>
-            <button onClick={purchaseArmor}>25$</button>
+            <button onClick={() => {
+              purchaseArmor(0);
+            }}>25$</button>
           </div>
           <div className="item-option">
             <h2>Steel Armor Set</h2>
-            <button onClick={purchaseArmor}>40$</button>
+            <button onClick={() => {
+              purchaseArmor(0);
+            }}>40$</button>
           </div>
           <div className="item-option">
             <h2>Tungsten Armor Set</h2>
-            <button onClick={purchaseArmor}>85$</button>
+            <button onClick={() => {
+              purchaseArmor(0);
+            }}>85$</button>
           </div>
           <div className="item-option">
             <h2>Unique Pallastine Armor </h2>
-            <button onClick={purchaseArmor}>140$</button>
+            <button onClick={() => {
+              purchaseArmor(0);
+            }}>140$</button>
           </div>
           <div className="item-option">
             <h2>Dark Overseer's Galantry Set</h2>
-            <button onClick={purchaseArmor}>300$</button>
+            <button onClick={() => {
+              purchaseArmor(0);
+            }}>300$</button>
           </div>
         </div>
       </div>
