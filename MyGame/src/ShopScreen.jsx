@@ -13,7 +13,7 @@ currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor}) {
   // },[selectedShopWeapon]);
 
   const purchaseWeapon = (weaponIndex) => {
-    if(gold > 22) {
+    if(gold > weaponsArray[weaponIndex].weaponCost) {
         // setCurrentWeapon(weaponsArray[weaponIndex.weaponName]);
         // setDamage(weaponsArray[weaponIndex.weaponDamage]);
         // setGold(prevGold => prevGold - weaponsArray[weaponIndex.weaponCost]);
