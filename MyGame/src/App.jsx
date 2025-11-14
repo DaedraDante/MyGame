@@ -45,11 +45,11 @@ const [damage,setDamage] = useState(() => {
 });
 const [currentWeapon,setCurrentWeapon] = useState(() => {
   const savedCurrentWeapon = localStorage.getItem("currentWeapon");
-  return savedCurrentWeapon ? JSON.parse(savedCurrentWeapon) : "fist";
+  return savedCurrentWeapon ? JSON.parse(savedCurrentWeapon) : "Fist";
 });
 const [currentArmor,setCurrentArmor] = useState(() => {
   const savedCurrentArmor = localStorage.getItem("currentArmor");
-  return savedCurrentArmor ? JSON.parse(savedCurrentArmor) : "Old";
+  return savedCurrentArmor ? JSON.parse(savedCurrentArmor) : "Old T-shirt";
 });
 
 // player variables, setting to local storage
@@ -89,7 +89,7 @@ const [weaponsArray,setWeaponsArray] = useState([
   {weaponName:"Scepter Of Doom",
    weaponDamage:35,
    weaponCost:300
-  },
+  }
 ]);
 const [armorsArray,setArmorsArray] = useState([
   {
@@ -99,27 +99,27 @@ const [armorsArray,setArmorsArray] = useState([
   },
    {
     armorName:"Chainmail Armor Set",
-    armorValue:3,
+    armorValue:4,
     armorCost:25
   },
    {
-    armorName:"Old Worn Leather Suit",
-    armorValue:5,
+    armorName:"Steel Armor Set",
+    armorValue:11,
     armorCost:40
   },
    {
-    armorName:"Old Worn Leather Suit",
-    armorValue:10,
+    armorName:"Tungsten Armor Set",
+    armorValue:20,
     armorCost:85
   },
    {
-    armorName:"Old Worn Leather Suit",
-    armorValue:14,
+    armorName:"Diamantine Armor set",
+    armorValue:45,
     armorCost:140
   },
    {
-    armorName:"Old Worn Leather Suit",
-    armorValue:20,
+    armorName:"Paladin's Armor set",
+    armorValue:100,
     armorCost:300
   }
 ]);

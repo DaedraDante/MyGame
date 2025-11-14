@@ -32,87 +32,109 @@ currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor}) {
         alert(`not enough money to buy ${armorsArray[armorIndex].armorName}`)
     }
   }
- 
+
   return(
     <div className="shop-screen">
       <div className="shop-inner">
+        <div className="stats-window">
+          <h2>Stats</h2>
+          <p>Gold: {gold}</p>
+          <p>Max Health: {health}</p>
+          <p>Weapon: {currentWeapon}</p>
+          <p>Armor: {currentArmor}</p>
+          </div>
         <div className="weapons-shop">
           <h1>Weapons</h1>
-           <div className="item-option">
-            <p>{gold} gold</p>
-            <h2>Sharpened Stick</h2>
-            <button onClick={() => {
-              purchaseWeapon(0);
-            }}>10$</button>
-          </div>
-          <div className="item-option">
-            <h2>Copper Shortsword</h2>
-              <button onClick={() => {
-              purchaseWeapon(1);
-            }}>25$</button>
-          </div>
-          <div className="item-option">
-            <h2>Iron Mace</h2>
-              <button onClick={() => {
-              purchaseWeapon(2);
-            }}>40$</button>
-          </div>
-          <div className="item-option">
-            <h2>Black Bone Scythe</h2>
-              <button onClick={() => {
-              purchaseWeapon(3);
-            }}>85$</button>
-          </div>
-          <div className="item-option">
-            <h2>Flaming Platinum Staff</h2>
-              <button onClick={() => {
-              purchaseWeapon(4);
-            }}>140$</button>
-          </div>
-          <div className="item-option">
-            <h2>Scepter Of Doom</h2>
-              <button onClick={() => {
-              purchaseWeapon(5);
-            }}>300$</button>
+          <div className="item-options">
+              <div className="item-option">
+                <h2>{weaponsArray[0].weaponName}</h2>
+                <p>Damage: {weaponsArray[0].weaponDamage}</p>
+                <button onClick={() => {
+                  purchaseWeapon(0);
+                }}>10$</button>
+              </div>
+              <div className="item-option">
+                <h2>{weaponsArray[1].weaponName}</h2>
+                <p>Damage: {weaponsArray[1].weaponDamage}</p>
+                  <button onClick={() => {
+                  purchaseWeapon(1);
+                }}>25$</button>
+              </div>
+              <div className="item-option">
+                <h2>{weaponsArray[2].weaponName}</h2>
+                <p>Damage: {weaponsArray[2].weaponDamage}</p>
+                  <button onClick={() => {
+                  purchaseWeapon(2);
+                }}>40$</button>
+              </div>
+              <div className="item-option">
+                <h2>{weaponsArray[3].weaponName}</h2>
+                <p>Damage: {weaponsArray[3].weaponDamage}</p>
+                  <button onClick={() => {
+                  purchaseWeapon(3);
+                }}>85$</button>
+              </div>
+              <div className="item-option">
+                <h2>{weaponsArray[4].weaponName}</h2>
+                <p>Damage: {weaponsArray[4].weaponDamage}</p>
+                  <button onClick={() => {
+                  purchaseWeapon(4);
+                }}>140$</button>
+              </div>
+              <div className="item-option">
+                <h2>{weaponsArray[5].weaponName}</h2>
+                <p>Damage: {weaponsArray[5].weaponDamage}</p>
+                  <button onClick={() => {
+                  purchaseWeapon(5);
+                }}>300$</button>
+              </div>
           </div>
         </div>
         <div className="armor-shop">
           <h1>Armor</h1>
-          <div className="item-option">
-            <h2>Old Worn Leather Suit</h2>
+          <div className="item-options">
+                <div className="item-option">
+            <h2>{armorsArray[0].armorName}</h2>
+            <p>+{armorsArray[0].armorValue} Max Health</p>
             <button onClick={() => {
               purchaseArmor(0);
             }}>10$</button>
           </div>
           <div className="item-option">
-            <h2>Chainmail Armor Set</h2>
+            <h2>{armorsArray[1].armorName}</h2>
+            <p>+{armorsArray[1].armorValue} Max Health</p>
             <button onClick={() => {
               purchaseArmor(0);
             }}>25$</button>
           </div>
           <div className="item-option">
-            <h2>Steel Armor Set</h2>
+            <h2>{armorsArray[2].armorName}</h2>
+            <p>+{armorsArray[2].armorValue} Max Health</p>
             <button onClick={() => {
               purchaseArmor(0);
             }}>40$</button>
           </div>
           <div className="item-option">
-            <h2>Tungsten Armor Set</h2>
+            <h2>{armorsArray[3].armorName}</h2>
+            <p>+{armorsArray[3].armorValue} Max Health</p>
             <button onClick={() => {
               purchaseArmor(0);
             }}>85$</button>
           </div>
           <div className="item-option">
-            <h2>Unique Pallastine Armor </h2>
+            <h2>{armorsArray[4].armorName}</h2>
+            <p>+{armorsArray[4].armorValue} Max Health</p>
             <button onClick={() => {
               purchaseArmor(0);
             }}>140$</button>
           </div>
           <div className="item-option">
-            <h2>Dark Overseer's Galantry Set</h2>
+            <h2>{armorsArray[5].armorName}</h2>
+            <p>+{armorsArray[5].armorValue} Max Health</p>
             <button onClick={() => {
               purchaseArmor(0);
             }}>300$</button>
+          </div>
           </div>
         </div>
       </div>

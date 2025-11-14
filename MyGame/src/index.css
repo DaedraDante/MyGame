@@ -190,14 +190,6 @@ button:hover {
   display: flex;
   gap: 2rem;
 }
-.item-option {
-
-  width: 20rem;
-  padding: 1rem;
-}
-.item-option h2{
-  font-size: 1rem;
-}
 .weapons-shop {
   display: flex;
   flex-direction: column;
@@ -217,5 +209,25 @@ button:hover {
   align-items: center;
   background-color: var(--bg-color-2);
   width: 32rem;
+  border-radius: 0.5rem;
+}
+.item-option {
+  width: 50%;
+  padding: 1rem;
+}
+.item-option h2{
+  font-size: 1rem;
+}
+.item-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
+.stats-window {  
+  display: flex;
+  flex-direction: column;
+  width: 14rem;
+  height: 20rem;
+  background-color: var(--bg-color-2);
   border-radius: 0.5rem;
 }
