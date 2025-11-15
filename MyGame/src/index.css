@@ -17,6 +17,9 @@
   --primary-color:#58b1bc;
   --secondary-color:#91d2db;
   --accent-color:#65c9d6;
+  --box-shadow-color-1:rgba(14, 22, 37, 0.856) 0px 30px 60px -12px inset;
+  --bx-shdw-color-2: rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  --box-shadow-1:rgba(16, 22, 36, 0.986) 0px 30px 60px -12px inset, rgba(19, 14, 41, 0.774) 0px 18px 36px -18px inset;
 }
 
 a {
@@ -147,15 +150,18 @@ button:hover {
 }
 .monster-area {
   background-color: var(--bg-color-2);
+  background: linear-gradient(var(--bg-color-1),var(--bg-color-2));
   height: 44rem;
   width: 72rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+  box-shadow: var(--box-shadow-1);
 }
 .player-area {
   background-color: var(--bg-color-2);
+  background: linear-gradient(var(--bg-color-1),var(--bg-color-2));
   width: 72rem;
   height: 8rem;
   display: flex;
@@ -163,15 +169,18 @@ button:hover {
   align-items: center;
   text-align: center;
   gap: 3rem;
+  box-shadow: var(--box-shadow-1);
 }
 .player-area button {
   width: 12rem;
   height: 4rem;
 }
 .textbox-area {
+  background: linear-gradient(var(--bg-color-1),var(--bg-color-2));
   background-color: var(--bg-color-2);
   height: 54rem;
   width: 20rem;
+  box-shadow: var(--box-shadow-1);
 }
 
 
@@ -200,6 +209,7 @@ button:hover {
   width: 32rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  box-shadow: var(--box-shadow-1);
 }
 .armor-shop {
   display: flex;
@@ -210,10 +220,14 @@ button:hover {
   background-color: var(--bg-color-2);
   width: 32rem;
   border-radius: 0.5rem;
+  box-shadow: var(--box-shadow-1);
 }
 .item-option {
-  width: 50%;
   padding: 1rem;
+  margin: 0.5rem;
+  width: 12rem;
+  border: 2px solid var(--bg-color-1);
+  border-radius: 0.5rem;
 }
 .item-option h2{
   font-size: 1rem;
@@ -230,4 +244,5 @@ button:hover {
   height: 20rem;
   background-color: var(--bg-color-2);
   border-radius: 0.5rem;
+  box-shadow: var(--box-shadow-1);
 }

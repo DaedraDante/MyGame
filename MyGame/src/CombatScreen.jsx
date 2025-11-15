@@ -4,8 +4,9 @@
   damage,currentMonsterName,setCurrentMonsterName,
   currentMonsterHealth,setCurrentMonsterHealth,
   health,setHealth,gold,setGold,gameScreen,
-  setGameScreen,showGameScreen}) {
-
+  setGameScreen,showGameScreen,
+  maxHealth,setMaxHealth}) {
+    const attackPlayer = () => {}
     const attackMonster = () => {
       if(currentMonsterHealth > 1) {
         setCurrentMonsterHealth(prevMonsterHealth => prevMonsterHealth - damage)
@@ -32,7 +33,7 @@
                 <button onClick={() => {
                   showGameScreen();
                 }}>Flee</button>
-                <h2>HP: {health}</h2>
+                <h2>HP: {maxHealth}</h2>
                 <h2>Gold: {gold} </h2>
             </div>
           </div>

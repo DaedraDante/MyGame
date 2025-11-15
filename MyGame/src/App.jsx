@@ -5,6 +5,7 @@ import ShopScreen from './ShopScreen'
 import CombatScreen from './CombatScreen'
 function App() {
 
+
   // screens/windows
   const [menuScreen,setMenuScreen] = useState(true);
   const [gameScreen,setGameScreen] = useState(false);
@@ -30,11 +31,14 @@ function App() {
     setCombatScreen(true);
   };
 
+
   // player variables, retrieval from local storage
-const [health,setHealth] = useState(() => {
-  const savedHealth = localStorage.getItem("health");
-  return savedHealth ? JSON.parse(savedHealth) : 100;
-});
+
+const [health,setHealth] = useState(100);
+const [maxHealth, setMaxHealth] = useState(() => {
+  const savedMaxHealth = localStorage.getItem("maxHealth");
+  return savedMaxHealth ? JSON.parse(savedMaxHealth) : 100;
+})
 const [gold,setGold] = useState(() => {
   const savedGold = localStorage.getItem("gold");
   return savedGold ? JSON.parse(savedGold) : 0;
@@ -52,19 +56,25 @@ const [currentArmor,setCurrentArmor] = useState(() => {
   return savedCurrentArmor ? JSON.parse(savedCurrentArmor) : "Old T-shirt";
 });
 
+
 // player variables, setting to local storage
+
   useEffect(() => {
     localStorage.setItem("gold",JSON.stringify(gold));
-    localStorage.setItem("health",JSON.stringify(health));
+    localStorage.setItem("maxHealth",JSON.stringify(maxHealth));
     localStorage.setItem("damage",JSON.stringify(damage));
     localStorage.setItem("currentWeapon",JSON.stringify(currentWeapon));
     localStorage.setItem("currentArmor",JSON.stringify(currentArmor));
   },[gold,health,damage]);  
 
-// textbox logic
+
+// textbox variables
+
 const [textboxMsgs,setTextboxMsgs] = useState([""]);
 
-// shop logic
+
+// shop variables
+
 const [weaponsArray,setWeaponsArray] = useState([
   {weaponName:"Sharpened Stick",
    weaponDamage:2,
@@ -93,38 +103,40 @@ const [weaponsArray,setWeaponsArray] = useState([
 ]);
 const [armorsArray,setArmorsArray] = useState([
   {
-    armorName:"Old Worn Leather Suit",
-    armorValue:1,
-    armorCost:10
+    armorName:"Worn Leather Suit",
+    armorValue:5,
+    armorCost:20
   },
    {
     armorName:"Chainmail Armor Set",
-    armorValue:4,
-    armorCost:25
+    armorValue:25,
+    armorCost:60
   },
    {
     armorName:"Steel Armor Set",
-    armorValue:11,
-    armorCost:40
+    armorValue:40,
+    armorCost:100
   },
    {
     armorName:"Tungsten Armor Set",
-    armorValue:20,
-    armorCost:85
+    armorValue:75,
+    armorCost:240
   },
    {
     armorName:"Diamantine Armor set",
-    armorValue:45,
-    armorCost:140
+    armorValue:125,
+    armorCost:400
   },
    {
     armorName:"Paladin's Armor set",
-    armorValue:100,
-    armorCost:300
+    armorValue:200,
+    armorCost:700
   }
 ]);
 const [selectedShopWeapon,setSelectedShopWeapon] = useState("");
 const [selectedShopArmor,setSelectedShopArmor] = useState("");
+
+
 // monster variables
 const [currentMonster,setCurrentMonster] = useState("none")
 const [currentMonsterId,setCurrentMonsterId] = useState(0);
@@ -140,7 +152,7 @@ const [MonstersArray,setMonstersArray] = useState([
     monsterImg:"monsterImage",
     monsterHealth:5,
     monsterDamage:3,
-    monsterGoldGiven:2
+    monsterGoldGiven:500
   },  {
     monsterId:2,
     monsterName:"Gray Boar",
@@ -171,14 +183,7 @@ const [MonstersArray,setMonstersArray] = useState([
     monsterGoldGiven:38
   }
 ])
-// const [levelArray,setLevelArray] = useState([
-//   {
-//     level:1,
-//     enemyOrder:`${slime} ${slime}`,
-//     levelGoldReward:12
-//   }
-// ])
-  //spawn monster functions
+// spawn monster functions
 
 const spawnChubSlime = () => {
   setCurrentMonsterName(MonstersArray[0].monsterName);
@@ -210,6 +215,8 @@ const spawnBloodyDireWolf = () => {
   setCurrentMonsterGoldGiven(MonstersArray[4].monsterGoldGiven);
   setCurrentMonsterDamage(MonstersArray[4].monsterDamage);
 }
+
+
   // level variables
 const [currentLevel,setCurrentLevel] = useState("");
 const [enemiesRemaining,setEnemiesRemaining] = useState(1);
@@ -308,6 +315,8 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       setCurrentWeapon={setCurrentWeapon}
       currentArmor={currentArmor}
       setCurrentArmor={setCurrentArmor}
+      maxHealth={maxHealth}
+      setMaxHealth={setMaxHealth}
       /> : null}
 
       {combatScreen ? <CombatScreen
@@ -327,6 +336,8 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       damage={damage}
       enemiesDefeated={enemiesDefeated}
       setEnemiesDefeated={setEnemiesDefeated}
+      maxHealth={maxHealth}
+      setMaxHealth={setMaxHealth}
       /> : null}
     </>
   )

@@ -71,6 +71,7 @@ function GameScreen({startLevelOne,startLevelTwo,
         <div className="levels-screen-buttons-area">
             <button onClick={showMenuScreen}>Back to menu</button>
             <button onClick={showShopScreen}>Go to shop</button>
+            <button>Stats</button>
         </div>
       </div>
     )

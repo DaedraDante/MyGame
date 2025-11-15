@@ -6,7 +6,8 @@ armorsArray,setArmorsArray,
 selectedShopWeapon,setSelectedShopWeapon,
 selectedShopArmor,setSelectedShopArmor,
 damage,setDamage,health,setHealth,gold,setGold,
-currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor}) {
+currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor,
+maxHealth,setMaxHealth}) {
 
   //  useEffect(() => {
   //   setSelectedShopWeapon(selectedShopWeapon);
@@ -26,20 +27,20 @@ currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor}) {
         if(gold > armorsArray[armorIndex].armorCost) {
         alert(`bought ${armorsArray[armorIndex].armorName}!`);
         setCurrentArmor(armorsArray[armorIndex].armorName);
-        setHealth(armorsArray[armorIndex].armorValue);
+        setMaxHealth(maxHealth + armorsArray[armorIndex].armorValue);
         setGold(prevGold => prevGold - armorsArray[armorIndex].armorCost);
     }else if(gold < armorsArray[armorIndex].armorCost) {
         alert(`not enough money to buy ${armorsArray[armorIndex].armorName}`)
     }
   }
-
+localStorage.clear()
   return(
     <div className="shop-screen">
       <div className="shop-inner">
         <div className="stats-window">
           <h2>Stats</h2>
           <p>Gold: {gold}</p>
-          <p>Max Health: {health}</p>
+          <p>Max Health: {maxHealth}</p>
           <p>Weapon: {currentWeapon}</p>
           <p>Armor: {currentArmor}</p>
           </div>
@@ -98,42 +99,42 @@ currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor}) {
             <p>+{armorsArray[0].armorValue} Max Health</p>
             <button onClick={() => {
               purchaseArmor(0);
-            }}>10$</button>
+            }}>{armorsArray[0].armorCost}$</button>
           </div>
           <div className="item-option">
             <h2>{armorsArray[1].armorName}</h2>
             <p>+{armorsArray[1].armorValue} Max Health</p>
             <button onClick={() => {
-              purchaseArmor(0);
-            }}>25$</button>
+              purchaseArmor(1);
+            }}>{armorsArray[1].armorCost}$</button>
           </div>
           <div className="item-option">
             <h2>{armorsArray[2].armorName}</h2>
             <p>+{armorsArray[2].armorValue} Max Health</p>
             <button onClick={() => {
-              purchaseArmor(0);
-            }}>40$</button>
+              purchaseArmor(2);
+            }}>{armorsArray[2].armorCost}$</button>
           </div>
           <div className="item-option">
             <h2>{armorsArray[3].armorName}</h2>
             <p>+{armorsArray[3].armorValue} Max Health</p>
             <button onClick={() => {
-              purchaseArmor(0);
-            }}>85$</button>
+              purchaseArmor(3);
+            }}>{armorsArray[3].armorCost}$</button>
           </div>
           <div className="item-option">
             <h2>{armorsArray[4].armorName}</h2>
             <p>+{armorsArray[4].armorValue} Max Health</p>
             <button onClick={() => {
-              purchaseArmor(0);
-            }}>140$</button>
+              purchaseArmor(4);
+            }}>{armorsArray[4].armorCost}$</button>
           </div>
           <div className="item-option">
             <h2>{armorsArray[5].armorName}</h2>
             <p>+{armorsArray[5].armorValue} Max Health</p>
             <button onClick={() => {
-              purchaseArmor(0);
-            }}>300$</button>
+              purchaseArmor(5);
+            }}>{armorsArray[5].armorCost}$</button>
           </div>
           </div>
         </div>

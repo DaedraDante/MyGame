@@ -9,7 +9,6 @@ function MenuScreen({showGameScreen,menuScreen,
         <div className="menu-buttons">
           <button onClick={() => {showGameScreen()}}>Start!</button>
           <button>Options</button>
-          <button>Stats</button>
         </div>
       </div>
     </>
