@@ -70,7 +70,7 @@ const [currentArmor,setCurrentArmor] = useState(() => {
 
 // textbox variables
 
-const [textboxMsgs,setTextboxMsgs] = useState([""]);
+const [textboxMsgs,setTextboxMsgs] = useState(["hello","hello"]);
 
 
 // shop variables
@@ -338,6 +338,8 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       setEnemiesDefeated={setEnemiesDefeated}
       maxHealth={maxHealth}
       setMaxHealth={setMaxHealth}
+      textboxMsgs={textboxMsgs}
+      setTextboxMsgs={setTextboxMsgs}
       /> : null}
     </>
   )

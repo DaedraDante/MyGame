@@ -5,11 +5,13 @@
   currentMonsterHealth,setCurrentMonsterHealth,
   health,setHealth,gold,setGold,gameScreen,
   setGameScreen,showGameScreen,
-  maxHealth,setMaxHealth}) {
+  maxHealth,setMaxHealth,
+  textboxMsgs,setTextboxMsgs}) {
     const attackPlayer = () => {}
     const attackMonster = () => {
       if(currentMonsterHealth > 1) {
         setCurrentMonsterHealth(prevMonsterHealth => prevMonsterHealth - damage)
+        setTextboxMsgs(prevArray => [...prevArray,`Hit monster for ${damage} damage`])
         }else {
           setEnemiesDefeated(prevEnemiesDefeated => prevEnemiesDefeated + 1)
           console.log(enemiesDefeated)
@@ -39,6 +41,9 @@
           </div>
           <div className="textbox-area">
             <h1>test</h1>
+            {textboxMsgs.map((msg,index) => (
+              <p key={index}>{msg}</p>
+            ))}
           </div>
         </div>
       </>

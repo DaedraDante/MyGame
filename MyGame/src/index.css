@@ -20,6 +20,7 @@
   --box-shadow-color-1:rgba(14, 22, 37, 0.856) 0px 30px 60px -12px inset;
   --bx-shdw-color-2: rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   --box-shadow-1:rgba(16, 22, 36, 0.986) 0px 30px 60px -12px inset, rgba(19, 14, 41, 0.774) 0px 18px 36px -18px inset;
+  --gradient-1: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 100%);
 }
 
 a {
@@ -51,7 +52,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -61,7 +62,7 @@ button:hover {
 
 
 .menu-screen {
-  background-color: var(--bg-color-1);
+  background: linear-gradient(var(--bg-color-1) 60%,var(--bg-color-2));
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -106,6 +107,7 @@ button:hover {
 }
 .levels-screen-levels-area {
   background-color: var(--bg-color-2);
+  margin-top: 2rem;
   height: 44rem;
   width: 72rem;
   display: flex;
@@ -113,18 +115,25 @@ button:hover {
   flex-wrap: wrap;
   overflow: auto;
   gap: 1rem;
+  border-radius: 1rem;
+}
+.levels-screen-levels-area::-webkit-scrollbar {
+  width: 0px;
 }
 .level-area {
   margin: 1rem;
   width: 14rem;
   height: 14rem;
-  background-color: rgb(92, 58, 92);
+  background: var(--gradient-1);
+  box-shadow: var(--box-shadow-1);
+  border-radius: 0.5rem;
   justify-content: center;
   align-items: center;
   align-content: center;
   text-align: center;
   padding: 1rem;
 }
+
 .levels-screen-buttons-area button{
   padding: 1rem;
   margin: 1rem;
