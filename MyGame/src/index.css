@@ -106,7 +106,8 @@ button:hover {
   gap: 1rem;
 }
 .levels-screen-levels-area {
-  background-color: var(--bg-color-2);
+  background:radial-gradient(var(--bg-color-2), var(--bg-color-1));
+  border: 1px solid var(--bg-color-2);
   margin-top: 2rem;
   height: 44rem;
   width: 72rem;

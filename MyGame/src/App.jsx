@@ -70,7 +70,7 @@ const [currentArmor,setCurrentArmor] = useState(() => {
 
 // textbox variables
 
-const [textboxMsgs,setTextboxMsgs] = useState(["hello","hello"]);
+const [textboxMsgs,setTextboxMsgs] = useState([]);
 
 
 // shop variables
@@ -333,6 +333,8 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       setCurrentMonsterHealth={setCurrentMonsterHealth}
       currentMonsterGoldGiven={currentMonsterGoldGiven}
       setCurrentMonsterGoldGiven={setCurrentMonsterGoldGiven}
+      currentMonsterDamage={currentMonsterDamage}
+      setCurrentMonsterDamage={setCurrentMonsterDamage}
       damage={damage}
       enemiesDefeated={enemiesDefeated}
       setEnemiesDefeated={setEnemiesDefeated}

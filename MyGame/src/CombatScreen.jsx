@@ -3,19 +3,24 @@
   enemiesDefeated,setEnemiesDefeated,
   damage,currentMonsterName,setCurrentMonsterName,
   currentMonsterHealth,setCurrentMonsterHealth,
+  currentMonsterDamage,setCurrentMonsterDamage,
   health,setHealth,gold,setGold,gameScreen,
   setGameScreen,showGameScreen,
   maxHealth,setMaxHealth,
   textboxMsgs,setTextboxMsgs}) {
-    const attackPlayer = () => {}
+    const attackPlayer = () => {
+      setMaxHealth(prevHealth => prevHealth - currentMonsterDamage)
+      setTextboxMsgs(prevArray => [...prevArray,`${currentMonsterName} hit you for ${currentMonsterDamage} damage`])
+    }
     const attackMonster = () => {
       if(currentMonsterHealth > 1) {
         setCurrentMonsterHealth(prevMonsterHealth => prevMonsterHealth - damage)
-        setTextboxMsgs(prevArray => [...prevArray,`Hit monster for ${damage} damage`])
+        setTextboxMsgs(prevArray => [...prevArray,`Hit ${currentMonsterName} for ${damage} damage`])
         }else {
           setEnemiesDefeated(prevEnemiesDefeated => prevEnemiesDefeated + 1)
           console.log(enemiesDefeated)
-          alert(`succesfully defeated ${currentMonsterName}`)
+          setTextboxMsgs(prevArray => [...prevArray,`Succesfully defeated ${currentMonsterName}`])
+          setTextboxMsgs(prevArray => [...prevArray,`Gained ${currentMonsterGoldGiven} gold!`])
           setGold(prevGold => prevGold + currentMonsterGoldGiven)
         }
       }
@@ -31,6 +36,7 @@
             <div className="player-area">
                 <button onClick={() => {
                   attackMonster();
+                  attackPlayer();
                 }}>Attack</button>
                 <button onClick={() => {
                   showGameScreen();
