@@ -27,7 +27,7 @@ maxHealth,setMaxHealth}) {
         if(gold > armorsArray[armorIndex].armorCost) {
         alert(`bought ${armorsArray[armorIndex].armorName}!`);
         setCurrentArmor(armorsArray[armorIndex].armorName);
-        setMaxHealth(maxHealth + armorsArray[armorIndex].armorValue);
+        setMaxHealth( maxHealth + armorsArray[armorIndex].armorValue);
         setGold(prevGold => prevGold - armorsArray[armorIndex].armorCost);
     }else if(gold < armorsArray[armorIndex].armorCost) {
         alert(`not enough money to buy ${armorsArray[armorIndex].armorName}`)
