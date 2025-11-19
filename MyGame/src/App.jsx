@@ -34,11 +34,15 @@ function App() {
 
   // player variables, retrieval from local storage
 
-const [health,setHealth] = useState(100);
+
+const [health, setHealth] = useState(() => {
+  const savedHealth = localStorage.getItem("health");
+  return savedHealth ? JSON.parse(savedHealth) : 100;
+});
 const [maxHealth, setMaxHealth] = useState(() => {
   const savedMaxHealth = localStorage.getItem("maxHealth");
   return savedMaxHealth ? JSON.parse(savedMaxHealth) : 100;
-})
+});
 const [gold,setGold] = useState(() => {
   const savedGold = localStorage.getItem("gold");
   return savedGold ? JSON.parse(savedGold) : 0;
@@ -61,6 +65,7 @@ const [currentArmor,setCurrentArmor] = useState(() => {
 
   useEffect(() => {
     localStorage.setItem("gold",JSON.stringify(gold));
+    localStorage.setItem("health", JSON.stringify(health));
     localStorage.setItem("maxHealth",JSON.stringify(maxHealth));
     localStorage.setItem("damage",JSON.stringify(damage));
     localStorage.setItem("currentWeapon",JSON.stringify(currentWeapon));
@@ -249,7 +254,6 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       } 
     }
   },[currentLevel,enemiesDefeated])
-
 
   function startLevelOne() {
     setCurrentLevel(1);

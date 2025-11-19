@@ -1,3 +1,5 @@
+import { useState,useEffect } from "react"
+
  function CombatScreen({currentMonsterGoldGiven,
   setCurrentMonsterGoldGiven,
   enemiesDefeated,setEnemiesDefeated,
@@ -24,7 +26,14 @@
           setGold(prevGold => prevGold + currentMonsterGoldGiven)
         }
       }
-      
+
+      useEffect(() => {
+        if(maxHealth < 1) {
+          alert(`You lost this battle!`);
+          showGameScreen();
+          setMaxHealth(100);
+        }
+      },[maxHealth])
     return(
       <>
         <div className="combat-screen">
