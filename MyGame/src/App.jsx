@@ -238,11 +238,13 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
         spawnGrayBoar();
       }else if(enemiesDefeated === 3) {
         setEnemiesDefeated(0);
+        setHealth(maxHealth);
         alert("Success you finished the level!")
         showGameScreen();
       } 
     }
     if(currentLevel === 2) {
+      setTextboxMsgs([""])
       if(enemiesDefeated === 0) {
         spawnGrayBoar();
       }else if(enemiesDefeated === 1) {

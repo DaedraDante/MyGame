@@ -191,6 +191,10 @@ button:hover {
   height: 54rem;
   width: 20rem;
   box-shadow: var(--box-shadow-1);
+  overflow: auto;
+}
+.textbox-area::-webkit-scrollbar {
+  width: 0px;
 }
 
 

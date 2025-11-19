@@ -11,7 +11,7 @@ import { useState,useEffect } from "react"
   maxHealth,setMaxHealth,
   textboxMsgs,setTextboxMsgs}) {
     const attackPlayer = () => {
-      setMaxHealth(prevHealth => prevHealth - currentMonsterDamage)
+      setHealth(prevHealth => prevHealth - currentMonsterDamage)
       setTextboxMsgs(prevArray => [...prevArray,`${currentMonsterName} hit you for ${currentMonsterDamage} damage`])
     }
     const attackMonster = () => {
@@ -26,14 +26,24 @@ import { useState,useEffect } from "react"
           setGold(prevGold => prevGold + currentMonsterGoldGiven)
         }
       }
-
+      const fleeLevel = () => {
+        if(enemiesDefeated === 0) {
+          alert("You can only leave the level after slaying one enemy!")
+        }else {
+          setEnemiesDefeated(0);
+          setTextboxMsgs([""])
+          setHealth(maxHealth);
+          showGameScreen();
+        }
+        
+      }
       useEffect(() => {
-        if(maxHealth < 1) {
+        if(health < 1) {
           alert(`You lost this battle!`);
           showGameScreen();
-          setMaxHealth(100);
+          setHealth(100);
         }
-      },[maxHealth])
+      },[health])
     return(
       <>
         <div className="combat-screen">
@@ -48,14 +58,14 @@ import { useState,useEffect } from "react"
                   attackPlayer();
                 }}>Attack</button>
                 <button onClick={() => {
-                  showGameScreen();
+                  fleeLevel();
                 }}>Flee</button>
-                <h2>HP: {maxHealth}</h2>
+                <h2>HP: {health}/{maxHealth}</h2>
                 <h2>Gold: {gold} </h2>
             </div>
           </div>
           <div className="textbox-area">
-            <h1>test</h1>
+            <h1>Battle Log</h1>
             {textboxMsgs.map((msg,index) => (
               <p key={index}>{msg}</p>
             ))}
