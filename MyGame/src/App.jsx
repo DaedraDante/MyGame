@@ -40,12 +40,27 @@ function App() {
   }
 
   // stats variables
-  const [levelsCompleted,setLevelsCompleted] = useState(0);
-  const [totalDamageDealt,setTotalDamageDealt] = useState(1);
-  const [playerKills,setPlayerKills] = useState(2);
-  const [totalGoldGained,setTotalGoldGained] = useState(3);
-  const [totalGoldSpent,setTotalGoldSpent] = useState(4);
-
+  const [levelsCompleted,setLevelsCompleted] = useState(() => {
+    const savedLevelsCompleted = localStorage.getItem("levelsCompleted");
+    return savedLevelsCompleted ? JSON.parse(savedLevelsCompleted) : 0;
+  });
+  const [totalDamageDealt,setTotalDamageDealt] = useState(() => {
+    const savedTotalDamageDealt = localStorage.getItem("totalDamageDealt");
+    return savedTotalDamageDealt ? JSON.parse(savedTotalDamageDealt) : 0;
+  });
+  const [playerKills,setPlayerKills] = useState(() => {
+    const savedPlayerKills = localStorage.getItem("playerKills");
+    return savedPlayerKills ? JSON.parse(savedPlayerKills) : 0;
+  });
+  const [totalGoldGained,setTotalGoldGained] = useState(() => {
+    const savedTotalGoldGained = localStorage.getItem("totalGoldGained");
+    return savedTotalGoldGained ? JSON.parse(savedTotalGoldGained) : 0;
+  });
+  const [totalGoldSpent,setTotalGoldSpent] = useState(() => {
+    const savedTotalGoldSpent = localStorage.getItem("totalGoldSpent");
+    return savedTotalGoldSpent ? JSON.parse(savedTotalGoldSpent) : 0;
+  });
+  
   // player variables, retrieval from local storage
 
 const [health, setHealth] = useState(() => {
@@ -74,7 +89,7 @@ const [currentArmor,setCurrentArmor] = useState(() => {
 });
 
 
-// player variables, setting to local storage
+//  setting variables to local storage
 
   useEffect(() => {
     localStorage.setItem("gold",JSON.stringify(gold));
@@ -83,7 +98,13 @@ const [currentArmor,setCurrentArmor] = useState(() => {
     localStorage.setItem("damage",JSON.stringify(damage));
     localStorage.setItem("currentWeapon",JSON.stringify(currentWeapon));
     localStorage.setItem("currentArmor",JSON.stringify(currentArmor));
-  },[gold,health,damage]);  
+    localStorage.setItem("levelsCompleted",JSON.stringify(levelsCompleted));
+    localStorage.setItem("totalDamageDealt",JSON.stringify(totalDamageDealt));
+    localStorage.setItem("playerKills",JSON.stringify(playerKills));
+    localStorage.setItem("totalGoldGained",JSON.stringify(totalGoldGained));
+    localStorage.setItem("totalGoldSpent",JSON.stringify(totalGoldSpent));
+  },[gold,maxHealth,damage,currentWeapon,currentArmor,levelsCompleted,
+    totalDamageDealt,playerKills,totalGoldGained,totalGoldSpent]);  
 
 
 // textbox variables
