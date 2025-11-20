@@ -1,6 +1,5 @@
 
-function MenuScreen({showGameScreen,menuScreen,
-    setMenuScreen,gameScreen,setGameScreen}) {
+function MenuScreen({showGameScreen}) {
 
   return(
     <>

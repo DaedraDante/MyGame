@@ -1,12 +1,7 @@
 import { useState,useEffect } from "react";
-function ShopScreen({setMenuScreen,setGameScreen,
-  setShopScreen,showGameScreen,
-weaponsArray,setWeaponsArray,
-armorsArray,setArmorsArray,
-selectedShopWeapon,setSelectedShopWeapon,
-selectedShopArmor,setSelectedShopArmor,
-damage,setDamage,health,setHealth,gold,setGold,
-currentWeapon,setCurrentWeapon,currentArmor,setCurrentArmor,
+function ShopScreen({showGameScreen,weaponsArray,armorsArray,
+setDamage,gold,setGold,currentWeapon,setCurrentWeapon,
+currentArmor,setCurrentArmor,
 maxHealth,setMaxHealth}) {
 
   //  useEffect(() => {

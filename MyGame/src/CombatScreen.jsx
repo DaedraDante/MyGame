@@ -1,13 +1,11 @@
 import { useState,useEffect } from "react"
 
  function CombatScreen({currentMonsterGoldGiven,
-  setCurrentMonsterGoldGiven,
   enemiesDefeated,setEnemiesDefeated,
   damage,currentMonsterName,
   currentMonsterHealth,setCurrentMonsterHealth,
   currentMonsterDamage,
-  health,setHealth,gold,setGold,gameScreen,
-  setGameScreen,showGameScreen,
+  health,setHealth,gold,setGold,showGameScreen,
   maxHealth,setTotalDamageDealt,setTotalGoldGained,setPlayerKills,
   textboxMsgs,setTextboxMsgs}) {
 
