@@ -1,6 +1,6 @@
 
 function StatsScreen({levelsCompleted,totalDamageDealt,playerKills,
-    totalGoldGained,showGameScreen}) {
+    totalGoldGained,showGameScreen,totalGoldSpent}) {
     return (
       <>
         <div className="stats-screen">
@@ -10,7 +10,7 @@ function StatsScreen({levelsCompleted,totalDamageDealt,playerKills,
                 <p>Total damage dealt: {totalDamageDealt}</p>
                 <p>Player kills: {playerKills}</p>
                 <p>Total gold gained: {totalGoldGained}</p>
-                <p>Gold spent: 12</p>
+                <p>Gold spent: {totalGoldSpent}</p>
             </div>
             <button onClick={showGameScreen}>Back to level screen</button>
         </div>

@@ -19,6 +19,7 @@ function App() {
     setMenuScreen(false);
     setShopScreen(false);
     setCombatScreen(false);
+    setStatsScreen(false);
     setGameScreen(true);
   };
   const showShopScreen = () => {
@@ -251,6 +252,7 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       }else if(enemiesDefeated === 3) {
         setEnemiesDefeated(0);
         setHealth(maxHealth);
+        setLevelsCompleted(prevLevelsCompleted => prevLevelsCompleted + 1)
         alert("Success you finished the level!")
         showGameScreen();
       } 
@@ -337,6 +339,7 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       setCurrentArmor={setCurrentArmor}
       maxHealth={maxHealth}
       setMaxHealth={setMaxHealth}
+      setTotalGoldSpent={setTotalGoldSpent}
       /> : null}
 
       {combatScreen ? <CombatScreen
@@ -365,6 +368,7 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       setTotalDamageDealt={setTotalDamageDealt}
       setTotalGoldGained={setTotalGoldGained}
       setPlayerKills={setPlayerKills}
+      setLevelsCompleted={setLevelsCompleted}
       /> : null}
 
       {statsScreen ? <StatsScreen 

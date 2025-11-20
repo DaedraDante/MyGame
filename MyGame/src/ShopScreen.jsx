@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 function ShopScreen({showGameScreen,weaponsArray,armorsArray,
 setDamage,gold,setGold,currentWeapon,setCurrentWeapon,
 currentArmor,setCurrentArmor,
-maxHealth,setMaxHealth}) {
+maxHealth,setMaxHealth,setTotalGoldSpent}) {
 
   //  useEffect(() => {
   //   setSelectedShopWeapon(selectedShopWeapon);
@@ -13,6 +13,7 @@ maxHealth,setMaxHealth}) {
         alert(`bought ${weaponsArray[weaponIndex].weaponName}!`);
         setCurrentWeapon(weaponsArray[weaponIndex].weaponName);
         setDamage(weaponsArray[weaponIndex].weaponDamage);
+        setTotalGoldSpent(prevTotalGoldSpent => prevTotalGoldSpent + weaponsArray[weaponIndex].weaponCost)
         setGold(prevGold => prevGold - weaponsArray[weaponIndex].weaponCost);
     }else if(gold < weaponsArray[weaponIndex].weaponCost) {
         alert(`not enough money to buy ${weaponsArray[weaponIndex].weaponName}`)
@@ -23,6 +24,7 @@ maxHealth,setMaxHealth}) {
         alert(`bought ${armorsArray[armorIndex].armorName}!`);
         setCurrentArmor(armorsArray[armorIndex].armorName);
         setMaxHealth( maxHealth + armorsArray[armorIndex].armorValue);
+        setTotalGoldSpent(prevTotalGoldSpent => prevTotalGoldSpent + armorsArray[armorIndex].armorCost)
         setGold(prevGold => prevGold - armorsArray[armorIndex].armorCost);
     }else if(gold < armorsArray[armorIndex].armorCost) {
         alert(`not enough money to buy ${armorsArray[armorIndex].armorName}`)
