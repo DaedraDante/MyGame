@@ -3,48 +3,57 @@ import { useState,useEffect } from "react"
  function CombatScreen({currentMonsterGoldGiven,
   setCurrentMonsterGoldGiven,
   enemiesDefeated,setEnemiesDefeated,
-  damage,currentMonsterName,setCurrentMonsterName,
+  damage,currentMonsterName,
   currentMonsterHealth,setCurrentMonsterHealth,
-  currentMonsterDamage,setCurrentMonsterDamage,
+  currentMonsterDamage,
   health,setHealth,gold,setGold,gameScreen,
   setGameScreen,showGameScreen,
-  maxHealth,setMaxHealth,
+  maxHealth,setTotalDamageDealt,setTotalGoldGained,setPlayerKills,
   textboxMsgs,setTextboxMsgs}) {
+
+
     const attackPlayer = () => {
       setHealth(prevHealth => prevHealth - currentMonsterDamage)
       setTextboxMsgs(prevArray => [...prevArray,`${currentMonsterName} hit you for ${currentMonsterDamage} damage`])
     }
+
     const attackMonster = () => {
       if(currentMonsterHealth > 1) {
-        setCurrentMonsterHealth(prevMonsterHealth => prevMonsterHealth - damage)
-        setTextboxMsgs(prevArray => [...prevArray,`Hit ${currentMonsterName} for ${damage} damage`])
+        setCurrentMonsterHealth(prevMonsterHealth => prevMonsterHealth - damage);
+        setTextboxMsgs(prevArray => [...prevArray,`Hit ${currentMonsterName} for ${damage} damage`]);
+        setTotalDamageDealt(prevDamageDealt => prevDamageDealt + damage);
         }else {
-          setEnemiesDefeated(prevEnemiesDefeated => prevEnemiesDefeated + 1)
+          setEnemiesDefeated(prevEnemiesDefeated => prevEnemiesDefeated + 1);
           console.log(enemiesDefeated)
-          setTextboxMsgs(prevArray => [...prevArray,`Succesfully defeated ${currentMonsterName}`])
-          setTextboxMsgs(prevArray => [...prevArray,`Gained ${currentMonsterGoldGiven} gold!`])
-          setGold(prevGold => prevGold + currentMonsterGoldGiven)
+          setTextboxMsgs(prevArray => [...prevArray,`Succesfully defeated ${currentMonsterName}`]);
+          setPlayerKills(prevPlayerKills => prevPlayerKills + 1);
+          setTextboxMsgs(prevArray => [...prevArray,`Gained ${currentMonsterGoldGiven} gold!`]);
+          setTotalGoldGained(prevGoldGained => prevGoldGained + currentMonsterGoldGiven);
+          setGold(prevGold => prevGold + currentMonsterGoldGiven);
         }
       }
-      const fleeLevel = () => {
-        if(enemiesDefeated === 0) {
-          alert("You can only leave the level after slaying one enemy!")
-        }else {
-          setEnemiesDefeated(0);
-          setTextboxMsgs([""])
-          setHealth(maxHealth);
-          showGameScreen();
-        }
-        
+
+    const fleeLevel = () => {
+      if(enemiesDefeated === 0) {
+        alert("You can only leave the level after slaying one enemy!")
+      }else {
+        setEnemiesDefeated(0);
+        setTextboxMsgs([""])
+        setHealth(maxHealth);
+        showGameScreen();
       }
-      useEffect(() => {
-        if(health < 1) {
-          alert(`You lost this battle!`);
-          showGameScreen();
-          setHealth(100);
-        }
-      },[health])
-    return(
+    }
+    //lose stage
+    useEffect(() => {
+      if(health < 1) {
+        alert(`You lost this battle!`);
+        showGameScreen();
+        setHealth(maxHealth);
+      }
+    },[health])
+
+
+    return (
       <>
         <div className="combat-screen">
           <div className="monster-and-player-area">

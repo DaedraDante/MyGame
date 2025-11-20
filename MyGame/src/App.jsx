@@ -3,6 +3,8 @@ import MenuScreen from './MenuScreen'
 import GameScreen from './GameScreen'
 import ShopScreen from './ShopScreen'
 import CombatScreen from './CombatScreen'
+import StatsScreen from './StatsScreen'
+
 function App() {
 
 
@@ -11,6 +13,7 @@ function App() {
   const [gameScreen,setGameScreen] = useState(false);
   const [shopScreen,setShopScreen] = useState(false);
   const [combatScreen,setCombatScreen] = useState(false);
+  const [statsScreen,setStatsScreen] = useState(false);
 
   const showGameScreen = () => {
     setMenuScreen(false);
@@ -30,10 +33,19 @@ function App() {
     setGameScreen(false);
     setCombatScreen(true);
   };
+  const showStatsScreen = () => {
+    setGameScreen(false);
+    setStatsScreen(true);
+  }
 
+  // stats variables
+  const [levelsCompleted,setLevelsCompleted] = useState(0);
+  const [totalDamageDealt,setTotalDamageDealt] = useState(1);
+  const [playerKills,setPlayerKills] = useState(2);
+  const [totalGoldGained,setTotalGoldGained] = useState(3);
+  const [totalGoldSpent,setTotalGoldSpent] = useState(4);
 
   // player variables, retrieval from local storage
-
 
 const [health, setHealth] = useState(() => {
   const savedHealth = localStorage.getItem("health");
@@ -244,7 +256,6 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       } 
     }
     if(currentLevel === 2) {
-      setTextboxMsgs([""])
       if(enemiesDefeated === 0) {
         spawnGrayBoar();
       }else if(enemiesDefeated === 1) {
@@ -296,6 +307,9 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       combatScreen={combatScreen}
       setCombatScreen={setCombatScreen}
       showCombatScreen={showCombatScreen}
+      statsScreen={statsScreen}
+      setStatsScreen={setStatsScreen}
+      showStatsScreen={showStatsScreen}
       startLevelOne={startLevelOne}
       startLevelTwo={startLevelTwo}
       startLevelThree={startLevelThree}
@@ -348,6 +362,18 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       setMaxHealth={setMaxHealth}
       textboxMsgs={textboxMsgs}
       setTextboxMsgs={setTextboxMsgs}
+      setTotalDamageDealt={setTotalDamageDealt}
+      setTotalGoldGained={setTotalGoldGained}
+      setPlayerKills={setPlayerKills}
+      /> : null}
+
+      {statsScreen ? <StatsScreen 
+      showGameScreen={showGameScreen}
+      levelsCompleted={levelsCompleted}
+      totalDamageDealt={totalDamageDealt}
+      totalGoldGained={totalGoldGained}
+      totalGoldSpent={totalGoldSpent}
+      playerKills={playerKills}
       /> : null}
     </>
   )

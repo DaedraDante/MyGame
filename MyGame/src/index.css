@@ -260,3 +260,30 @@ button:hover {
   border-radius: 0.5rem;
   box-shadow: var(--box-shadow-1);
 }
+
+.stats-screen {
+  background-color: var(--bg-color-1);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+.stats-screen .stats-container {
+  background-color: var(--bg-color-2);
+  width: 36rem;
+  height: 44rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--box-shadow-1);
+  border-radius: 0.5rem;
+}
+.stats-screen .stats-container p {
+  margin: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
