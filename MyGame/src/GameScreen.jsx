@@ -34,12 +34,12 @@ function GameScreen({startLevelOne,startLevelTwo,
             <div className="level-area">
               <h2>Level 6</h2>
               <p>Difficulty: Medium</p>
-              <button>Start</button>
+              <button onClick={startLevelSix}>Start</button>
             </div>
             <div className="level-area">
               <h2>Level 7</h2>
               <p>Difficulty: Medium</p>
-              <button>Start</button>
+              <button onClick={startLevelSeven}>Start</button>
             </div>
             <div className="level-area">
               <h2>Level 8</h2>
