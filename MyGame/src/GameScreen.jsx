@@ -1,6 +1,7 @@
 
 function GameScreen({startLevelOne,startLevelTwo,
-  startLevelThree,startLevelFour,startLevelFive,showMenuScreen,
+  startLevelThree,startLevelFour,startLevelFive,startLevelSix
+  ,startLevelSeven,showMenuScreen,
   showShopScreen,showStatsScreen}) {
     return(
       <div className="levels-screen">

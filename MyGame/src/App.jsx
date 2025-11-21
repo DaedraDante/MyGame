@@ -117,7 +117,7 @@ const [textboxMsgs,setTextboxMsgs] = useState([]);
 const [weaponsArray,setWeaponsArray] = useState([
   {weaponName:"Sharpened Stick",
    weaponDamage:2,
-   weaponCost:10
+   weaponCost:10,
   },
   {weaponName:"Copper Shortsword",
    weaponDamage:5,
@@ -191,36 +191,57 @@ const [MonstersArray,setMonstersArray] = useState([
     monsterImg:"monsterImage",
     monsterHealth:5,
     monsterDamage:3,
-    monsterGoldGiven:500
+    monsterGoldGiven:4
   },  {
     monsterId:2,
     monsterName:"Gray Boar",
     monsterImg:"monsterImage",
     monsterHealth:18,
     monsterDamage:6,
-    monsterGoldGiven:8
+    monsterGoldGiven:10
   },  {
     monsterId:3,
     monsterName:"Fanged Wolf",
     monsterImg:"monsterImage",
     monsterHealth:32,
     monsterDamage:11,
-    monsterGoldGiven:14
+    monsterGoldGiven:24
   },  {
     monsterId:4,
     monsterName:"Grub Goblin",
     monsterImg:"monsterImage",
     monsterHealth:50,
     monsterDamage:18,
-    monsterGoldGiven:28
+    monsterGoldGiven:38
   },  {
     monsterId:5,
     monsterName:"Bloody Dire Wolf",
     monsterImg:"monsterImage",
     monsterHealth:75,
     monsterDamage:26,
-    monsterGoldGiven:38
-  }
+    monsterGoldGiven:55
+  },  {
+    monsterId:6,
+    monsterName:"Hungry Orc",
+    monsterImg:"monsterImage",
+    monsterHealth:125,
+    monsterDamage:35,
+    monsterGoldGiven:90
+  },  {
+    monsterId:7,
+    monsterName:"Drakeling",
+    monsterImg:"monsterImage",
+    monsterHealth:190,
+    monsterDamage:50,
+    monsterGoldGiven:110
+  },  {
+    monsterId:8,
+    monsterName:"Brood Arachna",
+    monsterImg:"monsterImage",
+    monsterHealth:280,
+    monsterDamage:75,
+    monsterGoldGiven:160
+  },  
 ])
 // spawn monster functions
 
@@ -254,6 +275,24 @@ const spawnBloodyDireWolf = () => {
   setCurrentMonsterGoldGiven(MonstersArray[4].monsterGoldGiven);
   setCurrentMonsterDamage(MonstersArray[4].monsterDamage);
 }
+const spawnHungryOrc = () => {
+  setCurrentMonsterName(MonstersArray[5].monsterName);
+  setCurrentMonsterHealth(MonstersArray[5].monsterHealth);
+  setCurrentMonsterGoldGiven(MonstersArray[5].monsterGoldGiven);
+  setCurrentMonsterDamage(MonstersArray[5].monsterDamage);
+}
+const spawnDrakeling = () => {
+  setCurrentMonsterName(MonstersArray[6].monsterName);
+  setCurrentMonsterHealth(MonstersArray[6].monsterHealth);
+  setCurrentMonsterGoldGiven(MonstersArray[6].monsterGoldGiven);
+  setCurrentMonsterDamage(MonstersArray[6].monsterDamage);
+}
+const spawnBroodArachna = () => {
+  setCurrentMonsterName(MonstersArray[7].monsterName);
+  setCurrentMonsterHealth(MonstersArray[7].monsterHealth);
+  setCurrentMonsterGoldGiven(MonstersArray[7].monsterGoldGiven);
+  setCurrentMonsterDamage(MonstersArray[7].monsterDamage);
+}
 
 
   // level variables
@@ -261,6 +300,13 @@ const [currentLevel,setCurrentLevel] = useState("");
 const [enemiesRemaining,setEnemiesRemaining] = useState(1);
 const [enemiesDefeated,setEnemiesDefeated] = useState(0);
 
+const finishLevel = () => {
+    alert(`Completed level ${currentLevel}!`)
+    setEnemiesDefeated(0);
+    setHealth(maxHealth);
+    setLevelsCompleted(prevLevelsCompleted => prevLevelsCompleted + 1)
+    showGameScreen();
+}
 // start level functions
   useEffect(() => {
     if(currentLevel === 1) {
@@ -271,11 +317,7 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       }else if(enemiesDefeated === 2) {
         spawnGrayBoar();
       }else if(enemiesDefeated === 3) {
-        setEnemiesDefeated(0);
-        setHealth(maxHealth);
-        setLevelsCompleted(prevLevelsCompleted => prevLevelsCompleted + 1)
-        alert("Success you finished the level!")
-        showGameScreen();
+        finishLevel();
       } 
     }
     if(currentLevel === 2) {
@@ -284,10 +326,63 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       }else if(enemiesDefeated === 1) {
         spawnFangedWolf();
       }else if(enemiesDefeated === 2) {
-        setEnemiesDefeated(0);
-        alert("Success you finished the level!")
-        showGameScreen();
+        finishLevel();
       } 
+    }
+    if(currentLevel === 3) {
+      if(enemiesDefeated === 0) {
+        spawnFangedWolf();
+      }else if(enemiesDefeated === 1) {
+        spawnFangedWolf();
+      }else if(enemiesDefeated === 2) {
+        spawnGrubGoblin();
+      }else if(enemiesDefeated === 3) {
+        finishLevel();
+      }
+    }
+    if(currentLevel === 4) {
+      if(enemiesDefeated === 0) {
+        spawnGrubGoblin();
+      }else if(enemiesDefeated === 1) {
+        spawnBloodyDireWolf();
+      }else if(enemiesDefeated === 2) {
+        spawnBloodyDireWolf();
+      }else if(enemiesDefeated === 3) {
+        finishLevel();
+      }
+    }
+   if(currentLevel === 5) {
+      if(enemiesDefeated === 0) {
+        spawnHungryOrc();
+      }else if(enemiesDefeated === 1) {
+        spawnHungryOrc();
+      }else if(enemiesDefeated === 2) {
+        spawnHungryOrc();
+      }else if(enemiesDefeated === 3) {
+        finishLevel();
+      }
+    }
+   if(currentLevel === 6) {
+      if(enemiesDefeated === 0) {
+        spawnBloodyDireWolf();
+      }else if(enemiesDefeated === 1) {
+        spawnHungryOrc();
+      }else if(enemiesDefeated === 2) {
+        spawnDrakeling();
+      }else if(enemiesDefeated === 3) {
+        finishLevel();
+      }
+    }
+   if(currentLevel === 7) {
+      if(enemiesDefeated === 0) {
+        spawnDrakeling();
+      }else if(enemiesDefeated === 1) {
+        spawnDrakeling();
+      }else if(enemiesDefeated === 2) {
+        spawnBroodArachna();
+      }else if(enemiesDefeated === 3) {
+        finishLevel();
+      }
     }
   },[currentLevel,enemiesDefeated])
 
@@ -310,6 +405,14 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
   function startLevelFive() {
     setCurrentLevel(5);
     showCombatScreen()
+  }
+  function startLevelSix() {
+    setCurrentLevel(6);
+    showCombatScreen();
+  }
+  function startLevelSeven() {
+    setCurrentLevel(7);
+    showCombatScreen();
   }
 
   return (
@@ -338,6 +441,8 @@ const [enemiesDefeated,setEnemiesDefeated] = useState(0);
       startLevelThree={startLevelThree}
       startLevelFour={startLevelFour}
       startLevelFive={startLevelFive}
+      startLevelSix={startLevelSix}
+      startLevelSeven={startLevelSeven}
       /> : null}
       {shopScreen ? <ShopScreen
       setShopScreen={setShopScreen}
