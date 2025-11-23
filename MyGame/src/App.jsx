@@ -1,13 +1,20 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useRef } from 'react'
 import MenuScreen from './MenuScreen'
 import GameScreen from './GameScreen'
 import ShopScreen from './ShopScreen'
 import CombatScreen from './CombatScreen'
 import StatsScreen from './StatsScreen'
+import clickSound from './assets/click.mp3'
 
 function App() {
 
-
+  const clickAudioRef = useRef(null);
+  const playClick = () => {
+    if (clickAudioRef.current) {
+      clickAudioRef.current.currentTime = 0; // rewind so it can play rapidly
+      clickAudioRef.current.play();
+    }
+  }
   // screens/windows
   const [menuScreen,setMenuScreen] = useState(true);
   const [gameScreen,setGameScreen] = useState(false);
@@ -417,13 +424,15 @@ const finishLevel = () => {
 
   return (
     <>
+      <audio ref={clickAudioRef} src={clickSound}></audio>
       {menuScreen ? <MenuScreen
       menuScreen={menuScreen}
       setMenuScreen={setMenuScreen}
       gameScreen={gameScreen}
       setGameScreen={setGameScreen}
       setShopScreen={setShopScreen}
-      showGameScreen={showGameScreen}/> : null}
+      showGameScreen={showGameScreen}
+      playClick={playClick}/> : null}
       {gameScreen ? <GameScreen
       showMenuScreen={showMenuScreen}
       setMenuScreen={setMenuScreen}
